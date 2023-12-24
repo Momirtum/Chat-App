@@ -1,10 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { SafeAreaView, StyleSheet, View } from "react-native";
 
 import ContentRow from "../components/contentRow";
 import Serprator from "../components/serprator";
 
-const Chats = () => {
+const Chats = ({ navigation }) => {
+  useEffect(() => {
+    const isLoggedIn = true;
+    if (!isLoggedIn) {
+      navigation.navigate("SignUp");
+    }
+  }, []);
+
   return (
     <SafeAreaView>
       <ContentRow

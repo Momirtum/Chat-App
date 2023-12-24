@@ -3,10 +3,11 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Ionicons from "react-native-vector-icons/Ionicons";
-import { SafeAreaView } from "react-native";
+import { SafeAreaView, View } from "react-native";
 
 import Chats from "./screens/Chats";
 import Settings from "./screens/Settings";
+import SignUp from "./screens/SignUp";
 import { colors } from "./config/constants";
 
 const Tabs = createBottomTabNavigator();
@@ -38,13 +39,23 @@ const MainStack = createStackNavigator();
 
 const App = () => {
   return (
-    <SafeAreaView style={{ flex: 1 }}>
+    <View style={{ flex: 1 }}>
       <NavigationContainer>
-        <MainStack.Navigator headerMode="false">
-          <MainStack.Screen name="Tabs" component={TabsScreen} />
+        <MainStack.Navigator>
+          <MainStack.Screen
+            name="Tabs"
+            component={TabsScreen}
+            options={{ headerShown: false }}
+          />
+          <MainStack.Screen
+            name="SignUp"
+            component={SignUp}
+            options={{ headerShown: false, animationEnabled: false }}
+            mode="modal"
+          />
         </MainStack.Navigator>
       </NavigationContainer>
-    </SafeAreaView>
+    </View>
   );
 };
 
