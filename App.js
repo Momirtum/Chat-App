@@ -8,6 +8,7 @@ import { SafeAreaView, View } from "react-native";
 import Chats from "./screens/Chats";
 import Settings from "./screens/Settings";
 import SignUp from "./screens/SignUp";
+import Chat from "./screens/chat";
 import { colors } from "./config/constants";
 
 const Tabs = createBottomTabNavigator();
@@ -53,6 +54,7 @@ const App = () => {
             options={{ headerShown: false, animationEnabled: false }}
             mode="modal"
           />
+          <MainStack.Screen name="Chat" component={Chat} />
         </MainStack.Navigator>
       </NavigationContainer>
     </View>

@@ -1,8 +1,39 @@
 import React, { useEffect } from "react";
-import { SafeAreaView, StyleSheet, View } from "react-native";
+import { SafeAreaView, Text } from "react-native";
 
 import ContentRow from "../components/contentRow";
 import Serprator from "../components/serprator";
+import Chat from "./chat";
+import firebase from "firebase/app";
+import "firebase/auth";
+import "firebase/firestore";
+
+const chats = [
+  {
+    users: ["me@mail.com", "a@mail.com"],
+    messages: [""],
+  },
+  {
+    users: ["me@mail.com", "b@mail.com"],
+    messages: [""],
+  },
+  {
+    users: ["me@mail.com", "c@mail.com"],
+    messages: [""],
+  },
+  {
+    users: ["me@mail.com", "d@mail.com"],
+    messages: [""],
+  },
+  {
+    users: ["me@mail.com", "e@mail.com"],
+    messages: [""],
+  },
+  {
+    users: ["me@mail.com", "f@mail.com"],
+    messages: [""],
+  },
+];
 
 const Chats = ({ navigation }) => {
   useEffect(() => {
@@ -14,21 +45,16 @@ const Chats = ({ navigation }) => {
 
   return (
     <SafeAreaView>
-      <ContentRow
-        name="Emir Taştan"
-        subtitle="Böle card tasarımın aq"
-        onPress={() => {
-          alert("Emir Taştan'a tıklandı");
-        }}
-      />
-      <Serprator />
-      <ContentRow
-        name="Azmi Mengü"
-        subtitle="Derhal revize edilmesi lazım edilmez ise kovulursun"
-        onPress={() => {
-          alert("Azmi Mengü'ye tıklandı");
-        }}
-      />
+      {chats.map((chat, index) => (
+        <ContentRow
+          key={index}
+          name={chat.users[1]}
+          subtitle={"Naber"}
+          onPress={() => {
+            navigation.navigate("Chat");
+          }}
+        />
+      ))}
       <Serprator />
     </SafeAreaView>
   );
